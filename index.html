@@ -260,7 +260,7 @@
             <h1>A Universe of Tokens</h1>
             <img class="logo" id="logo" src="" alt="The Information" />
         </div>
-        <p class="subheadline">Meta employees used 60.2 trillion AI tokens over the span of 30 days. That figure includes the text in all input, intermediate thought processes and outputted products.<br><br>Here&rsquo;s how those figures compare to the length of other works in terms of tokens. It&rsquo;s important to note these figures don&rsquo;t consider inputs before edits, thought processes and more, which certainly outweigh the final products.</p>
+        <p class="subheadline">Meta employees used 60.2 trillion AI tokens over the span of 30 days. That figure includes the text in all input, intermediate thought processes and outputted products.<br><br>Here&rsquo;s how those figures compare to the length of other works in terms of tokens. Note that an AI model's consumption includes input tokens and those it uses to think, which can far exceed the amount of tokens in the actual output.</p>
 
         <div id="chart">
             <div id="bars-container"></div>
@@ -275,7 +275,7 @@
             </div>
         </div>
 
-        <p class="source">Approximations based on tokens being three-quarters of a word.<br>Chart: Shane Burke. Source: TKTKTK</p>
+        <p class="source">Approximations based on tokens equaling three-quarters of an English word.<br>Chart: Shane Burke. Source: TKTKTK</p>
     </div>
 
     <script>
@@ -288,22 +288,19 @@
         { tokens: 100,             formatted: "100",     label: "100 tokens",         desc: "A 75-word paragraph" },
         { tokens: 1000,            formatted: "1K",      label: "1K tokens",          desc: "A short article" },
         { tokens: 10000,           formatted: "10K",     label: "10K tokens",         desc: "A long-form magazine feature" },
-        { tokens: 72000,           formatted: "72K",     label: "72K tokens",         desc: "The Great Gatsby" },
+        { tokens: 63000,           formatted: "63K",     label: "63K tokens",         desc: "The Great Gatsby" },
         { tokens: 150000,          formatted: "150K",    label: "150K tokens",        desc: "The Quran" },
         { tokens: 225000,          formatted: "225K",    label: "225K tokens",        desc: "Tokens used coding this graphic", self: true },
         { tokens: 783000,          formatted: "783K",    label: "783K tokens",        desc: "War and Peace" },
-        { tokens: 1040000,         formatted: "1.04M",   label: "1.04M tokens",       desc: "The King James Bible" },
         { tokens: 1440000,         formatted: "1.44M",   label: "1.44M tokens",       desc: "The entire Harry Potter series" },
         { tokens: 58000000,        formatted: "58M",     label: "58M tokens",         desc: "The Encyclopedia Britannica" },
         { tokens: 511300000,       formatted: "511M",    label: "511M tokens",        desc: "A lifetime of reading (1 hr/day for 70 years)" },
-        { tokens: 2620000000,      formatted: "2.62B",   label: "2.62B tokens",       desc: "DeepMind\u2019s Project Gutenberg dataset" },
         { tokens: 6800000000,      formatted: "6.8B",    label: "6.8B tokens",        desc: "All of English-language Wikipedia" },
         { tokens: 41000000000,     formatted: "41B",     label: "41B tokens",         desc: "All of Wikipedia in every language" },
         { tokens: 281000000000,    formatted: "281B",    label: "281B tokens",        desc: "Meta\u2019s highest individual user", meta: true },
-        { tokens: 1060000000000,   formatted: "1.06T",   label: "1.06T tokens",       desc: "Every book in the New York Public Library" },
         { tokens: 2660000000000,   formatted: "2.66T",   label: "2.66T tokens",       desc: "Every book in the Library of Congress" },
         { tokens: 15000000000000,  formatted: "15T",     label: "15T tokens",         desc: "Tokens used to train Meta\u2019s Llama 3", meta: true },
-        { tokens: 20000000000000,  formatted: "20T",     label: "20T tokens",         desc: "All code in GitHub\u2019s public repos" },
+        { tokens: 20000000000000,  formatted: "20T",     label: "20T tokens",         desc: "All code in GitHub\u2019s public repos (early 2024)" },
         { tokens: 60200000000000,  formatted: "60.2T",   label: "60.2T tokens",       desc: "Meta\u2019s total token usage over 30 days", meta: true },
     ];
 

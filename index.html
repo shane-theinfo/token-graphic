@@ -205,12 +205,12 @@
             .container { padding: 12px; }
             h1 { font-size: 1.3rem; }
             .logo { height: 1.3rem; }
-            .subheadline { font-size: 0.95rem; }
+            .subheadline { font-size: 0.82rem; margin-bottom: 10px; }
             .bar-row {
                 flex-direction: column;
                 align-items: stretch;
                 height: auto;
-                margin-bottom: 10px;
+                margin-bottom: 7px;
                 max-height: 500px;
                 transition: opacity 500ms ease, max-height 400ms ease, margin-bottom 400ms ease;
             }
@@ -394,7 +394,25 @@ Here’s how that compares to other works.</p>
     function renderStep(stepIndex, animate = true) {
         const maxTokens = DATA[stepIndex].tokens;
         const trackWidth = getTrackWidth();
+        const isMobile = window.innerWidth <= 500;
+        const maxVisibleBars = isMobile ? 4 : Infinity;
         let hiddenCount = 0;
+
+        // First pass: determine which items are visible by size
+        const visibleIndices = [];
+        for (let i = 0; i <= stepIndex; i++) {
+            const proportion = DATA[i].tokens / maxTokens;
+            const pxWidth = proportion * MAX_BAR_FRAC * trackWidth;
+            if (pxWidth >= MIN_BAR_PX || i === stepIndex) {
+                visibleIndices.push(i);
+            }
+        }
+        // On mobile, only keep the last maxVisibleBars
+        const showSet = new Set(
+            visibleIndices.length > maxVisibleBars
+                ? visibleIndices.slice(-maxVisibleBars)
+                : visibleIndices
+        );
 
         DATA.forEach((item, i) => {
             const row = state.barRows[i];
@@ -411,11 +429,10 @@ Here’s how that compares to other works.</p>
             const proportion = item.tokens / maxTokens;
             const pxWidth = proportion * MAX_BAR_FRAC * trackWidth;
 
-            if (pxWidth < MIN_BAR_PX && i < stepIndex) {
-                // Too small — collapse
+            if (!showSet.has(i) && i < stepIndex) {
+                // Too small or exceeds mobile max — collapse
                 hiddenCount++;
                 if (!row.classList.contains('collapsed')) {
-                    // Delay collapse so user sees the shrink
                     setTimeout(() => {
                         row.className = 'bar-row collapsed';
                     }, animate ? 150 : 0);

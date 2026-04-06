@@ -399,25 +399,16 @@ Here’s how that compares to other works.</p>
     function renderStep(stepIndex, animate = true) {
         const maxTokens = DATA[stepIndex].tokens;
         const trackWidth = getTrackWidth();
-        const isMobile = window.innerWidth <= 500;
-        const maxVisibleBars = isMobile ? 4 : Infinity;
+        const maxVisibleBars = 4;
         let hiddenCount = 0;
 
-        // First pass: determine which items are visible by size
-        const visibleIndices = [];
-        for (let i = 0; i <= stepIndex; i++) {
-            const proportion = DATA[i].tokens / maxTokens;
-            const pxWidth = proportion * MAX_BAR_FRAC * trackWidth;
-            if (pxWidth >= MIN_BAR_PX || i === stepIndex) {
-                visibleIndices.push(i);
-            }
+        // Always show the most recent maxVisibleBars items (or all if fewer)
+        const totalItems = stepIndex + 1;
+        const startFrom = totalItems > maxVisibleBars ? stepIndex - maxVisibleBars + 1 : 0;
+        const showSet = new Set();
+        for (let i = startFrom; i <= stepIndex; i++) {
+            showSet.add(i);
         }
-        // On mobile, only keep the last maxVisibleBars
-        const showSet = new Set(
-            visibleIndices.length > maxVisibleBars
-                ? visibleIndices.slice(-maxVisibleBars)
-                : visibleIndices
-        );
 
         DATA.forEach((item, i) => {
             const row = state.barRows[i];

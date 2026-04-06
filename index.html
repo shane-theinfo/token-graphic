@@ -46,6 +46,8 @@
             margin-top: 14px;
             text-align: right;
         }
+        .source-mobile { display: none; }
+        .source-desktop { display: block; }
 
         /* Chart */
         #chart {
@@ -251,6 +253,8 @@
             .bar-label .desc { color: #555; }
             #faded-note { padding-left: 0; font-size: 11px; }
             .timeline-dot { width: 8px; height: 8px; }
+            .source-desktop { display: none; }
+            .source-mobile { display: block; }
         }
     </style>
 </head>
@@ -277,7 +281,8 @@ Here’s how that compares to other works.</p>
             </div>
         </div>
 
-        <p class="source">Approximations based on tokens equaling three-quarters of an English word. Figures don't include images, videos or other content that is more token intensive. • Chart: Shane Burke. Source: The Information reporting.</p>
+        <p class="source source-desktop">Approximations based on tokens equaling three-quarters of an English word. Figures don't include images, videos or other content that is more token intensive. &bull; Chart: Shane Burke. Source: The Information reporting.</p>
+        <p class="source source-mobile">Notes: Est. based on 1 token = 0.75 words. Not including images, videos or other token-intensive content. &bull; Chart: Shane Burke. Source: The Information reporting.</p>
     </div>
 
     <script>
